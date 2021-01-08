@@ -37,7 +37,7 @@
 			<script>
 			
     		document.getElementById("board").onclick=function(){
-    			location.href="";	
+    			location.href="/board/boardListView.board?cpage=1";	
     		}
     		document.getElementById("MyPage").onclick=function(){
     			location.href="";	
