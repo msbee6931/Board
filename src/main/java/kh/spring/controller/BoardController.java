@@ -29,7 +29,7 @@ public class BoardController {
 		return "board";
 	}
 	
-	//게시판 목록 띄우기
+	//게시글 상세보기
 	@RequestMapping("viewBoard.board")
 	public String viewBoard(Model model) throws Exception {
 	String id = (String) session.getAttribute("id");
@@ -39,10 +39,11 @@ public class BoardController {
 	return "viewBoard";	
 	}
 	
+	//게시글 목록
 	@RequestMapping("boardListView.board")
 	public String boardListView(HttpServletRequest request,BoardDTO dto, Model model) throws Exception {
 	System.out.println("Controller viewBoard요청 ");
-	String id = (String) session.getAttribute("login");
+	String id = (String) session.getAttribute("id");
 	String cpage = request.getParameter("cpage");
 	int currentPage = Integer.parseInt(cpage);
 	List<BoardDTO> list = bService.listByCpage(Integer.parseInt(cpage));
