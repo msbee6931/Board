@@ -2,4 +2,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Members">
+<select id="checkId" resultType="Integer">
+		select count(*) from boardmembers where id=#{id}
+	</select>
+	<insert id="insert">
+		insert into boardmembers values(#{id},#{pw},#{name},#{email},#{img},sysdate)
+	</insert>
+	<select id="logincheck" resultType="Integer">
+		select count(*) from boardmembers where id=#{id} and pw=#{pw}
+	</select>
 </mapper>
