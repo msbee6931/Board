@@ -33,13 +33,13 @@
 				<button type=button id=MyPage>마이페이지</button>
 				<button type=button id=logout>로그아웃</button>
 				<button type=button id=deleteck >회원탈퇴</button>
-				<input type= hidden id = phidden>
+				<input type= hidden id = phidden value="">
 			</fieldset>
 			
 			<script>
-			
+
     		document.getElementById("board").onclick=function(){
-    			location.href="";	
+    			location.href="/board/boardListView.board?cpage=1";	
     		}
     		document.getElementById("MyPage").onclick=function(){
     			location.href="/members/mypage";	
@@ -48,13 +48,12 @@
     			location.href="/members/logout";	
     		}
     		document.getElementById("deleteck").onclick=function(){
-    			var openWin;
-    			window.name="parentForm";
-    			openWin = window.open("/members/againConfirm","childForm", "width=570, height=350, resizable = no, scrollbars = no");	
+    			var openWin = window.open("/members/againConfirm", "PopupWin", "width=300,height=200");	
     			 if(document.getElementById("phidden").value=="yes"){
-    	        location.href="/members/quit"
-    	        }
-    		}
+ 	    	        location.href="/members/quit"
+    			 }
+    	     }
+    		
     	        
     	    
     		

@@ -28,7 +28,14 @@ public class MembersContorller {
 	@Autowired
 	private MembersService mService;
 	
-		
+		@RequestMapping("quit")
+		public String quit(HttpSession session) {
+			MembersDTO dto = new MembersDTO();
+			dto.setId((String)session.getAttribute("id"));
+			mService.quit(dto);
+			session.removeAttribute("id");
+			return "home";
+		}
 		@RequestMapping("againConfirm")
 		public String again(HttpSession session) {
 			return "members/againConfirm";
@@ -60,11 +67,7 @@ public class MembersContorller {
 		
 		@RequestMapping("update")
 		public String update(MembersDTO dto,HttpSession session){
-
-			
 			dto.setId((String)session.getAttribute("id"));
-			
-			System.out.println("이메일 : "+dto.getEmail()+", name : "+dto.getName()+", img : "+dto.getImg()+", id : "+dto.getId());
 			mService.update(dto);
 			return "home";
 		}

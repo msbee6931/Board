@@ -3,6 +3,7 @@ package kh.spring.dto;
 import java.sql.Date;
 
 public class BoardDTO {
+
    private int seq;
    private String title;
    private String writer;
@@ -67,3 +68,4 @@ public class BoardDTO {
       this.write_date = write_date;
    }
 }
+
