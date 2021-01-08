@@ -59,7 +59,7 @@
 <script>
 $("#inBtn").on("click", function() {
 	let id=${id}
-	location.href="/board/boardWrite.board?id="+id;
+	location.href="/board/boardWritePage.board?id="+id;
 })
 
 $("#backBtn").on("click", function() {
