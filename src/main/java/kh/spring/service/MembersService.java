@@ -32,5 +32,8 @@ public class MembersService {
 	public int loginCheck(String id, String pw)throws Exception{
 		return mDao.loginCheck(id, pw);
 	}
+	public int insert(MembersDTO dto)throws Exception{
+		return mDao.insert(dto);
+	}
 
 }

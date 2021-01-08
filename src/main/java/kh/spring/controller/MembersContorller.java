@@ -91,7 +91,7 @@ public class MembersContorller {
 	
 	@RequestMapping(value="okSignUp.mem",produces="text/plain; charset=UTF8")
 	public String okSignUp(MembersDTO dto) throws Exception{
-		int result = mDao.insert(dto);
+		int result = mService.insert(dto);
 		if(result>0) {
 			return "home";
 		}else {
