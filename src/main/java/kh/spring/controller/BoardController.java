@@ -36,6 +36,15 @@ public class BoardController {
 	@Autowired
 	private CommentService cService;
 	
+	// 글 작성 페이지로 가기
+	@RequestMapping("boardWritePage.board")
+	public String boardWritePage(HttpServletRequest request,Model model) {
+		System.out.println("글작성 페이지 요청!");
+		String id = request.getParameter("id");
+		model.addAttribute("id",id);
+		return "board/boardWrite";
+	}
+	
 	// 게시판 글작성
 	@RequestMapping("boardWrite.board")
 	public String boardWrite(MultipartFile file,BoardDTO dto) throws Exception {
@@ -60,7 +69,9 @@ public class BoardController {
 		}else {
 			result = bService.boardWrite(dto);
 		}
+
 		return "board/boardWriteResult";
+
 	}
 	
 	// 게시판 글수정
@@ -88,7 +99,9 @@ public class BoardController {
 			result = bService.boardUpdate(dto);
 		}
 		model.addAttribute("result",result);
+
 		return "board/boardUpdateResult";
+
 	}
 	
 	// 게시판 글삭제
@@ -96,7 +109,9 @@ public class BoardController {
 	public String boardDelete(Model model,int seq) {
 		int result = bService.boardDelete(Integer.toString(seq));
 		model.addAttribute("result",result);
+
 		return "board/boardDeleteResult";
+
 	}
 	
 	//게시글 상세보기
@@ -118,6 +133,7 @@ public class BoardController {
 		model.addAttribute("cnavi",cnavi);
 		
 		return "board/viewBoard";
+
 	}
 
 	
@@ -134,7 +150,9 @@ public class BoardController {
 	model.addAttribute("navi", navi);
 	model.addAttribute("id", id);
 	
+
 		return "board/boardListView";	
+
 	}
 	
 }

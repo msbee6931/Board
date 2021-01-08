@@ -6,6 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Write</title>
+<style>
+ *{
+       	margin: 0px;
+       	padding: 0px;
+       	box-sizing: border-box;
+    }
+	.container{
+		max-width: 980px;
+		margin: auto;
+        border: 1px solid black;
+	}
+    table{
+        border: 1px solid black;
+        width: 100%;        
+    }
+	tr, td{
+		border: 1px solid black;
+	}
+    input[type="text"]{
+        width: 100%;
+    }
+    textarea{
+        width: 100%;
+        height: 500px;
+    }
+    input[type="button"],
+    input[type="submit"]{
+        width: 100px;
+        height: 30px;
+    }
+    table tr:first-child,
+    table tr:last-child{
+        text-align: center;        
+    }
+</style>
 </head>
 <body>
 	<div class="container">

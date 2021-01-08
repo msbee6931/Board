@@ -57,10 +57,12 @@
 </body>
 
 <script>
+
 document.getElementById("inBtn").onclick=function(){
 
 	location.href="/board/boardWrite.board?id="+id.value;
 }
+
 
 document.getElementById("backBtn").onclick=function(){
 	location.href="/board/boardListView.board?cpage=1";
