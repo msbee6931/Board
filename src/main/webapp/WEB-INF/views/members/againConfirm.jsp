@@ -19,8 +19,7 @@
 <script>
 
 document.getElementById("yes").onclick=function(){
-		document.getElementById("hidden").value="yes";
-		opener.document.getElementById("phidden").value = document.getElementById("hidden").value;
+		window.opener.location.href="/members/quit";
 		window.close();
 	}
 document.getElementById("no").onclick=function(){

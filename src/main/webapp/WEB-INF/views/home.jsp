@@ -48,15 +48,10 @@
     			location.href="/members/logout";	
     		}
     		document.getElementById("deleteck").onclick=function(){
-    			var openWin = window.open("/members/againConfirm", "PopupWin", "width=300,height=200");	
-    			 if(document.getElementById("phidden").value=="yes"){
- 	    	        location.href="/members/quit"
-    			 }
+    			 var openWin = window.open("/members/againConfirm", "PopupWin", "width=300,height=200");	
+
     	     }
-    		
-    	        
-    	    
-    		
+
     	
     	</script>
 		</c:when>
