@@ -53,17 +53,17 @@
 
     
         </div>
-
+		<input type=hidden id= id value= ${id }>
 </body>
 
 <script>
-$("#inBtn").on("click", function() {
-	let id=${id}
-	location.href="/board/boardWrite.board?id="+id;
-})
+document.getElementById("inBtn").onclick=function(){
 
-$("#backBtn").on("click", function() {
+	location.href="/board/boardWrite.board?id="+id.value;
+}
+
+document.getElementById("backBtn").onclick=function(){
 	location.href="/board/boardListView.board?cpage=1";
-	})
+	}
 </script>
 </html>
