@@ -1,8 +1,10 @@
 package kh.spring.controller;
 
+
+import java.util.List;
+
 import java.io.File;
 import java.util.UUID;
-import java.util.List;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,12 +13,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.util.FileCopyUtils;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dto.BoardDTO;
+import kh.spring.dto.CommentDTO;
 import kh.spring.service.BoardService;
+import kh.spring.service.CommentService;
 
 @Controller
 @RequestMapping("/board")
@@ -26,6 +32,9 @@ public class BoardController {
 	private HttpSession session;
 	@Autowired
 	private BoardService bService;
+
+	@Autowired
+	private CommentService cService;
 	
 	// 게시판 글작성
 	@RequestMapping("boardWrite.board")
@@ -92,13 +101,24 @@ public class BoardController {
 	
 	//게시글 상세보기
 	@RequestMapping("viewBoard.board")
-	public String viewBoard(Model model) throws Exception {
-	String id = (String) session.getAttribute("id");
-	BoardDTO dto = bService.selectPage();
-	model.addAttribute("dto", dto);
-	model.addAttribute("id", id);
-	return "viewBoard";	
+	public String viewBoard(HttpServletRequest request, Model model ) throws Exception {
+		String id = (String)session.getAttribute("id");
+		model.addAttribute("id",id);
+		BoardDTO dto = bService.selectPage();
+		model.addAttribute("dto", dto);
+		int cpage = Integer.parseInt(request.getParameter("cpage")); //page =1
+		int seq = Integer.parseInt(request.getParameter("seq"));
+
+		CommentDTO cdto = new CommentDTO();
+		cdto.setLocation(seq);
+		List<CommentDTO> clist =  cService.commentList(cpage,cdto); //댓글리스트
+		model.addAttribute("clist",clist);
+		String cnavi = cService.commentNavi(cpage,cdto); //댓글내비
+		model.addAttribute("cnavi",cnavi);
+		
+		return "board/viewBoard";
 	}
+
 	
 	//게시글 목록
 	@RequestMapping("boardListView.board")
