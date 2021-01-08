@@ -37,8 +37,7 @@ public class BoardDAO {
 	public List<BoardDTO> listByCpage(int cpage) throws Exception{
 		int startRowNum = (cpage-1) * BoardConfigurator.recordCountPerPage + 1;
 		int endRowNum = startRowNum + BoardConfigurator.recordCountPerPage - 1;
-
-		Map<String, Integer> param = new HashMap<>();
+		Map<String, Integer> param = new HashMap<String, Integer>();
 		param.put("startRowNum", startRowNum);
 		param.put("endRowNum", endRowNum);
 		return session.selectList("Board.listByCpage",param);
