@@ -2,6 +2,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Members">
+
 <delete id="delete">
 delete from boardmembers where id = #{id}
 </delete>
@@ -13,4 +14,15 @@ update boardmembers set name=#{name}, email=#{email}, img=#{img} where id=#{id}
 <select id="selectAll" resultType="kh.spring.dto.MembersDTO">
 select * from boardmembers where id=#{id}
 </select>
+
+<select id="checkId" resultType="Integer">
+		select count(*) from boardmembers where id=#{id}
+	</select>
+	<insert id="insert">
+		insert into boardmembers values(#{id},#{pw},#{name},#{email},#{img},sysdate)
+	</insert>
+	<select id="logincheck" resultType="Integer">
+		select count(*) from boardmembers where id=#{id} and pw=#{pw}
+	</select>
+
 </mapper>

@@ -40,32 +40,28 @@ tr td:nth-child(1) {
 				</tr>
 
 
-				<span class="selectImg"> <img src="" width="100px"
+				<span class="selectImg"> <img src="files/${dto.img }" width="100px"
 					height="100px" />
 				</span>
-				<tr>
-					<td style="text-align: right">이미지:</td>
-					<td><input type="file" id="Img" name="img"></td>
-				</tr>
 
 
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" id=id name=id value=${dto.id }>
+					<td>${dto.id }
 					</td>
 
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" id=name name=name value=${dto.name }></td>
+					<td>${dto.name }</td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type="text" id=email name=email value=${dto.email }></td>
+					<td>${dto.email }</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type=submit id=update value=수정완료>
-					<input type=button id=return value=되돌아가기>
+					<td colspan="2"><input type=button id=update value="수정하기" />
+					<input type=button id=return value="되돌아가기" />
 					</td>
 				</tr>
 			</table>
@@ -74,22 +70,12 @@ tr td:nth-child(1) {
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-$("#Img").change(
-        function() {
-            if (this.files && this.files[0]) {
-                let reader = new FileReader;
-                reader.onload = function(data) {
-                    $(".selectImg img").attr("src", data.target.result).width(100);
-                }
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-    
-document.getElementById("return").onclick=function(){
-  	location.href="/members/mypage";
-  }
-           
+	document.getElementById("update").onclick=function(){
+		location.href="/members/updatePage"	
+	}
+	document.getElementById("return").onclick=function(){
+      	location.href="/";
+      }
             </script>
-
 </body>
 </html>

@@ -18,14 +18,12 @@
 </body>
 <script>
 
-	document.getElementBy("yes").onclick=function(){
-		hidden.value="yes";
+document.getElementById("yes").onclick=function(){
+		document.getElementById("hidden").value="yes";
 		opener.document.getElementById("phidden").value = document.getElementById("hidden").value;
 		window.close();
 	}
-	document.getElementBy("no").onclick=function(){
-		hidden.value="no";
-		opener.document.getElementById("phidden").value = document.getElementById("hidden").value;
+document.getElementById("no").onclick=function(){
 		window.close();
 	}
 	

@@ -24,4 +24,13 @@ public class MembersService {
 	public MembersDTO selectAll(String id) {
 		return mDao.selectAll(id);
 	}
+
+	
+	public int checkId(String id) throws Exception{
+		return mDao.checkId(id);
+	}
+	public int loginCheck(String id, String pw)throws Exception{
+		return mDao.loginCheck(id, pw);
+	}
+
 }
