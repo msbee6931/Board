@@ -2,4 +2,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Board">
+	<insert id="boardWrite">
+		<choose>
+			<when test='img == null'>
+				insert into board(seq,title,writer,contents,view_count,write_date) values (board_seq.nextval,#{title},#{writer},#{contents},default,sysdate)
+			</when>
+			<otherwise>
+				insert into board values (board_seq.nextval,#{title},#{writer},#{contents},#{img},default,sysdate)
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<update id="boardUpdate">
+		<choose>
+			<when test='img == null'>
+				update board set title=#{title},contents=#{contents} where seq=#{seq}
+			</when>
+			<otherwise>
+				update board set title=#{title},contents=#{contents},img=#{img} where seq=#{seq}
+			</otherwise>
+		</choose>
+	</update>
+	
+	<delete id="boardDelete">
+		delete from board where seq=#{seq}
+	</delete>
 </mapper>
